@@ -51,12 +51,12 @@ void init()
 void Registration()
 {
 	Reg newRegist;
-	cout << "Enter name" << endl;
+	cout << "Enter name:" << endl;
 	cin.ignore();
 	getline(cin, newRegist.FullName);
-	cout << "Enter mail" << endl;
+	cout << "Enter mail:" << endl;
 	cin >> newRegist.mail;
-	cout << "Enter password" << endl;
+	cout << "Enter password:" << endl;
 	cin >> newRegist.pass;
 	registration.push_back(newRegist);
 
@@ -77,7 +77,7 @@ void Registration()
 	fout.close();
 	cout << "New user seccesssful added..." << endl;
 	PAUSE
-		CLEAR
+	CLEAR
 }
 
 void LogInToYourAccount()
@@ -88,12 +88,12 @@ void LogInToYourAccount()
 	bool nameP = false;
 	bool mailP = false;
 	bool passP = false;
-	cout << "Enter correct name" << endl;
+	cout << "Enter correct name:" << endl;
 	cin.ignore();
 	getline(cin, name);
-	cout << "Enter correct mail" << endl;
+	cout << "Enter correct mail:" << endl;
 	cin >> mail;
-	cout << "Enter correct password" << endl;
+	cout << "Enter correct password:" << endl;
 	cin >> pass;
 	fstream fs("Registration.txt", ios::in | ios::out);
 	if (!fs)
@@ -109,10 +109,6 @@ void LogInToYourAccount()
 		while (!fs.eof())
 		{
 			currentString++;
-			//getline(fs, data);
-			//cout << data << endl;
-			//data = "";
-			//fs >> data;
 			getline(fs, data);
 			//cout << data << "\n";
 			if (currentString == 1)
@@ -139,6 +135,8 @@ void LogInToYourAccount()
 			if (nameP == true && mailP == true && passP == true && currentString == 3)
 			{
 				cout << "Hello " << name << ". You log in tour account" << endl;
+				PAUSE
+				CLEAR
 				return;
 			}
 			if (currentString == 3)
@@ -152,6 +150,8 @@ void LogInToYourAccount()
 		cout << "You entered not correct information. PLease try again" << endl;	
 	}
 	fs.close();
+	PAUSE
+	CLEAR
 }
 
 
