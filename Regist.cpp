@@ -56,6 +56,27 @@ void Registration()
 	getline(cin, newRegist.FullName);
 	cout << "Enter mail:" << endl;
 	cin >> newRegist.mail;
+	fstream fin("Registration.txt", ios::in | ios::out);
+	if (!fin)
+	{
+		cout << "Error: Application can't connect to database file" << endl;
+	}
+	else
+	{
+		string data;
+		while (!fin.eof())
+		{
+			getline(fin, data);
+			if (newRegist.mail == data)
+			{
+				cout << "This mail is already in use, please choose another one " << endl;
+				fin.close();
+				PAUSE
+				CLEAR
+				return;
+			}
+		}
+	}
 	cout << "Enter password:" << endl;
 	cin >> newRegist.pass;
 	registration.push_back(newRegist);
@@ -69,7 +90,7 @@ void Registration()
 	}
 	else
 	{
-		cout << "File open!" << endl;
+		//cout << "File open!" << endl;
 		fout << newRegist.FullName << endl;
 		fout << newRegist.mail << endl;
 		fout << newRegist.pass << endl;
@@ -134,7 +155,7 @@ void LogInToYourAccount()
 			}
 			if (nameP == true && mailP == true && passP == true && currentString == 3)
 			{
-				cout << "Hello " << name << ". You log in tour account" << endl;
+				cout << "Hello " << name << ". You log in to your account" << endl;
 				PAUSE
 				CLEAR
 				return;
